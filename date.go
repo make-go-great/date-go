@@ -66,7 +66,7 @@ func ToRFC3339(date string, location *time.Location) (string, error) {
 	return t.Format(time.RFC3339), nil
 }
 
-// Convert RGC3339 to default custom date format
+// Convert RFC3339 to default custom date format
 func FromRFC3339(rfc3339 string, location *time.Location) (string, error) {
 	t, err := time.ParseInLocation(time.RFC3339, rfc3339, location)
 	if err != nil {
