@@ -77,3 +77,29 @@ func TestToRFC3339(t *testing.T) {
 		})
 	}
 }
+
+func TestFromRFC3339(t *testing.T) {
+	tests := []struct {
+		name        string
+		rfc3339     string
+		wantResult  string
+		wantIsError bool
+	}{
+		{
+			name:       "1998-04-01T00:00:00Z",
+			rfc3339:    "1998-04-01T00:00:00Z",
+			wantResult: "1998-04-01",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotResult, gotErr := FromRFC3339(tc.rfc3339, time.UTC)
+			if gotErr != nil {
+				assert.Equal(t, tc.wantIsError, true)
+				return
+			}
+			assert.Equal(t, tc.wantResult, gotResult)
+		})
+	}
+}
