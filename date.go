@@ -75,3 +75,13 @@ func FromRFC3339(rfc3339 string, location *time.Location) (string, error) {
 
 	return t.Format(defaultDateFormat), nil
 }
+
+// Return all support date formats
+// For showing only
+func SupportDateFormats() string {
+	result := append([]string{}, dateFormats...)
+	result = append(result, dateToday)
+	result = append(result, dateYesterday)
+
+	return strings.Join(result, ", ")
+}
