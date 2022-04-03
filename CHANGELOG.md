@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.2.2 (2022-04-03)
+
+### Others
+
+- chore: fix typo (2022-04-03)
+
+- chore(changelog): generate v0.2.1 (2022-04-03)
+
 ## v0.2.1 (2022-04-03)
 
 ### Others
