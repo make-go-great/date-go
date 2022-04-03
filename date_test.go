@@ -19,6 +19,51 @@ func TestToRFC3339(t *testing.T) {
 			date:       "1998-01-18",
 			wantResult: "1998-01-18T00:00:00Z",
 		},
+		{
+			name:       "YYYY/MM/DD",
+			date:       "1998/04/01",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
+		{
+			name:       "YYYY-MM-DD",
+			date:       "1998.01.18",
+			wantResult: "1998-01-18T00:00:00Z",
+		},
+		{
+			name:       "YYYY/MM/DD",
+			date:       "1998 04 01",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
+		{
+			name:       "YYYYMMDD",
+			date:       "19980401",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
+		{
+			name:       "DD-MM-YYYY",
+			date:       "18-01-1998",
+			wantResult: "1998-01-18T00:00:00Z",
+		},
+		{
+			name:       "DD/MM/YYYY",
+			date:       "01/04/1998",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
+		{
+			name:       "DD.MM.YYYY",
+			date:       "18.01.1998",
+			wantResult: "1998-01-18T00:00:00Z",
+		},
+		{
+			name:       "DD MM YYYY",
+			date:       "01 04 1998",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
+		{
+			name:       "DDMMYYYY",
+			date:       "01041998",
+			wantResult: "1998-04-01T00:00:00Z",
+		},
 	}
 
 	for _, tc := range tests {
