@@ -3,6 +3,7 @@ package date
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -24,6 +25,9 @@ var (
 		"02 01 2006",
 	}
 	defaultDateFormat = dateFormats[0]
+
+	dateToday     = "today"
+	dateYesterday = "yesterday"
 )
 
 // Convert YYYY/MM/DD and more to RFC3339
@@ -31,6 +35,14 @@ func ToRFC3339(date string, location *time.Location) (string, error) {
 	// UTC should be default
 	if location == nil {
 		location = time.UTC
+	}
+
+	if strings.EqualFold(date, dateToday) {
+		return time.Now().In(location).Format(time.RFC3339), nil
+	}
+
+	if strings.EqualFold(date, dateYesterday) {
+		return time.Now().Add(-time.Hour * 24).In(location).Format(time.RFC3339), nil
 	}
 
 	// Try to parse date from custom formats
