@@ -103,3 +103,45 @@ func TestFromRFC3339(t *testing.T) {
 		})
 	}
 }
+
+func TestFormatDateByDefault(t *testing.T) {
+	tests := []struct {
+		name string
+		t    time.Time
+		want string
+	}{
+		{
+			name: "1997-04-01",
+			t:    time.Date(1997, 4, 1, 0, 0, 0, 0, time.UTC),
+			want: "1997-04-01",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := FormatDateByDefault(tc.t, time.UTC)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
+
+func TestFormatDateTimeByDefault(t *testing.T) {
+	tests := []struct {
+		name string
+		t    time.Time
+		want string
+	}{
+		{
+			name: "1997-04-01 01:02:03",
+			t:    time.Date(1997, 4, 1, 1, 2, 3, 0, time.UTC),
+			want: "1997-04-01 01:02:03",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := FormatDateTimeByDefault(tc.t, time.UTC)
+			assert.Equal(t, tc.want, got)
+		})
+	}
+}
