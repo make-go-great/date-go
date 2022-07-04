@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## v0.4.0 (2022-07-04)
+
+### Added
+
+- feat: add FormatDateByDefault and FormatDateTimeByDefault (2022-07-04)
+
+### Others
+
+- build(deps): bump github.com/stretchr/testify from 1.7.1 to 1.8.0 (2022-07-04)
+
+- chore: add dependabot (2022-07-04)
+
+- chore: unit test for new Format... (2022-07-04)
+
+- chore: update github workflows v3 (2022-07-04)
+
+- chore: remove roadmap (2022-07-04)
+
+- chore: add Makefile (2022-07-04)
+
+- chore(changelog): generate v0.3.0 (2022-04-03)
+
 ## v0.3.0 (2022-04-03)
 
 ### Added
