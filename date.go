@@ -13,13 +13,13 @@ var (
 	// Custom date formats
 	// Default is the first
 	dateFormats = []string{
-		// YYYY -> MM -> DD
+		// YYYY->MM->DD
 		"2006-01-02",
 		"2006/01/02",
 		"2006.01.02",
 		"2006 01 02",
 		"20060102",
-		// DD -> MM -> YYYY
+		// DD->MM->YYYY
 		"02-01-2006",
 		"02/01/2006",
 		"02.01.2006",
@@ -30,6 +30,12 @@ var (
 
 	dateToday     = "today"
 	dateYesterday = "yesterday"
+
+	dateTimeFormats = []string{
+		// YYYY->MM->DD hh->mm->ss
+		"2006-01-02 15:04:05",
+	}
+	defaultDateTimeFormat = dateTimeFormats[0]
 )
 
 // Convert YYYY/MM/DD and more to RFC3339
@@ -84,4 +90,14 @@ func SupportDateFormats() string {
 	result = append(result, dateYesterday)
 
 	return strings.Join(result, ", ")
+}
+
+// Format time to default date format
+func FormatDateByDefault(t time.Time, location *time.Location) string {
+	return t.In(location).Format(defaultDateFormat)
+}
+
+// Format time to default date time format
+func FormatDateTimeByDefault(t time.Time, location *time.Location) string {
+	return t.In(location).Format(defaultDateTimeFormat)
 }
