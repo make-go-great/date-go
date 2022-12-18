@@ -30,7 +30,7 @@ func TestToRFC3339(t *testing.T) {
 			wantResult: "1998-01-18T00:00:00Z",
 		},
 		{
-			name:       "YYYY/MM/DD",
+			name:       "YYYY MM DD",
 			date:       "1998 04 01",
 			wantResult: "1998-04-01T00:00:00Z",
 		},
@@ -95,6 +95,77 @@ func TestFromRFC3339(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			gotResult, gotErr := FromRFC3339(tc.rfc3339, time.UTC)
+			if gotErr != nil {
+				assert.Equal(t, tc.wantIsError, true)
+				return
+			}
+			assert.Equal(t, tc.wantResult, gotResult)
+		})
+	}
+}
+
+func TestToDefaultDate(t *testing.T) {
+	tests := []struct {
+		name        string
+		date        string
+		wantResult  string
+		wantIsError bool
+	}{
+		{
+			name:       "YYYY-MM-DD",
+			date:       "1998-01-18",
+			wantResult: "1998-01-18",
+		},
+		{
+			name:       "YYYY/MM/DD",
+			date:       "1998/04/01",
+			wantResult: "1998-04-01",
+		},
+		{
+			name:       "YYYY-MM-DD",
+			date:       "1998.01.18",
+			wantResult: "1998-01-18",
+		},
+		{
+			name:       "YYYY MM DD",
+			date:       "1998 04 01",
+			wantResult: "1998-04-01",
+		},
+		{
+			name:       "YYYYMMDD",
+			date:       "19980401",
+			wantResult: "1998-04-01",
+		},
+		{
+			name:       "DD-MM-YYYY",
+			date:       "18-01-1998",
+			wantResult: "1998-01-18",
+		},
+		{
+			name:       "DD/MM/YYYY",
+			date:       "01/04/1998",
+			wantResult: "1998-04-01",
+		},
+		{
+			name:       "DD.MM.YYYY",
+			date:       "18.01.1998",
+			wantResult: "1998-01-18",
+		},
+		{
+			name:       "DD MM YYYY",
+			date:       "01 04 1998",
+			wantResult: "1998-04-01",
+		},
+		{
+			name:       "DDMMYYYY",
+			date:       "01041998",
+			wantResult: "1998-04-01",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotResult, gotErr := ToDefaultDate(tc.date, time.UTC)
 			if gotErr != nil {
 				assert.Equal(t, tc.wantIsError, true)
 				return
