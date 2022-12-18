@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.5.0 (2022-12-19)
+
+### Added
+
+- feat: add ToDefaultDate (2022-12-19)
+
+### Others
+
+- chore: bump go 1.19 (2022-12-19)
+
+- chore: update Makefile (2022-12-19)
+
+- test: unit test ToDefaultDate (2022-12-19)
+
+- build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1 (2022-10-24)
+
+- chore(changelog): generate v0.4.0 (2022-07-04)
+
 ## v0.4.0 (2022-07-04)
 
 ### Added
