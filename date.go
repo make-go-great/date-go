@@ -82,6 +82,7 @@ func FromRFC3339(rfc3339 string, location *time.Location) (string, error) {
 	return t.Format(defaultDateFormat), nil
 }
 
+// Whatever date format is, always return default date format
 func ToDefaultDate(date string, location *time.Location) (string, error) {
 	dateInRFC3339, err := ToRFC3339(date, location)
 	if err != nil {
@@ -95,8 +96,7 @@ func ToDefaultDate(date string, location *time.Location) (string, error) {
 // For showing only
 func SupportDateFormats() string {
 	result := append([]string{}, dateFormats...)
-	result = append(result, dateToday)
-	result = append(result, dateYesterday)
+	result = append(result, dateToday, dateYesterday)
 
 	return strings.Join(result, ", ")
 }

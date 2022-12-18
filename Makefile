@@ -1,15 +1,29 @@
-.PHONY: all test coverage-cli coverate-html lint
+.PHONY: all test test-color coverage coverage-cli coverate-html lint format
 
-all: test lint
+all: test-color lint format
+	go mod tidy
 
 test:
-	go test -race -coverprofile=coverage.out ./...
+	go test -race -failfast ./...
 
-coverage-cli: test
+test-color:
+	go install github.com/haunt98/go-test-color@latest
+	go-test-color -race -failfast ./...
+
+coverage:
+	go test -coverprofile=coverage.out ./...
+
+coverage-cli: coverage
 	go tool cover -func=coverage.out
 
-coverage-html: test
+coverage-html: coverage
 	go tool cover -html=coverage.out
 
 lint:
 	golangci-lint run ./...
+
+format:
+	go install github.com/haunt98/gofimports/cmd/gofimports@latest
+	go install mvdan.cc/gofumpt@latest
+	gofimports -w -company github.com/make-go-great .
+	gofumpt -w -extra .
