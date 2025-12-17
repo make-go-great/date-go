@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## v0.6.0 (2025-12-18)
+
+### Others
+
+- chore: update lint (2024-11-25)
+
+- chore: bump go 1.20 (2023-02-25)
+
+- chore(changelog): generate v0.5.0 (2022-12-19)
+
+### Build
+
+- build: bump go.mod (2025-12-18)
+
+- build(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1 (#9) (2025-08-29)
+
+- build(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0 (#8) (2025-08-26)
+
+- build(deps): bump github.com/stretchr/testify from 1.9.0 to 1.10.0 (#7) (2024-11-25)
+
+- build(deps): bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#6) (2024-03-04)
+
+- build(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (2023-05-30)
+
+- build(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (2023-05-19)
+
+- build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (2023-02-27)
+
 ## v0.5.0 (2022-12-19)
 
 ### Added
